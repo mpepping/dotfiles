@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=1000                     # big big history
+export HISTFILESIZE=1000                 # big big history
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# Theme for bat
+export BAT_THEME="GitHub"
+
+# avoid ruby UTF8/ASCII errors
+export LC_ALL="en_US.UTF-8"
+
+# Set terminal tab title
+export PROMPT_COMMAND="echo -ne '\033]0;${HOSTNAME:0:3}\007';$PROMPT_COMMAND"
+export EDITOR='vim'
+
+export FZF_COMPLETION_OPTS='--preview "bat --style=numbers --color=always {}"'
+
+# set -o vi
+# bind -m vi-insert "\C-l":clear-screen
