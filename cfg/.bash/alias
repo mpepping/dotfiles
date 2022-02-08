@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+alias l='ls'
+alias ll='ls -la'
+alias lll='ls -lart'
+
+alias cat='bat'
+alias less='bat'
+alias diff='colordiff'
+alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'

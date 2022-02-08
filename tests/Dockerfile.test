@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/vscode/devcontainers/python:0-3.8
+
+WORKDIR /workspaces
+
+COPY . /root/dotfiles
+RUN /root/dotfiles/install.sh
+
+CMD bash
