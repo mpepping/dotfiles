@@ -2,6 +2,8 @@
 set -e
 cd "$(dirname "$0")/.."
 
-docker build . -t dotfiles -f tests/Dockerfile.test --force-rm
-docker run --rm -it dotfiles
-docker rmi dotfiles
+IMG="ghcr.io/mpepping/dotfiles:latest"
+
+docker build . -t $IMG -f tests/Dockerfile.test --force-rm
+docker run --rm -it $IMG
+docker rmi $IMG

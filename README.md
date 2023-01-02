@@ -15,7 +15,6 @@ Configure VS Code to use the dotfiles repository, so that it will be picked up b
 ```lang=json
 {
   "dotfiles.repository": "mpepping/dotfiles",
-  "remote.containers.dotfiles.repository": "mpepping/dotfiles",
   "terminal.integrated.env.linux": {
     "GIT_COMMITTER_NAME": "Your Name",
     "GIT_COMMITTER_EMAIL": "your@email.com",
