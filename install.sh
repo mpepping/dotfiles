@@ -17,8 +17,11 @@ ln -sf "${DOTPATH}/cfg/.bash" ~
 ln -sf "${DOTPATH}/cfg/.bashrc" ~/.bash_aliases # Cheating a bit here to inject my stuff
 ln -sf "${DOTPATH}/cfg/.fzf.bash" ~
 
-ln -sf "${DOTPATH}/cfg/.gitconfig" ~
-ln -sf "${DOTPATH}/cfg/.gitignore" ~
+# Link these dotfiles only if running in Codespaces
+if [[ -n $CODESPACES ]]; then
+  ln -sf "${DOTPATH}/cfg/.gitconfig" ~
+  ln -sf "${DOTPATH}/cfg/.gitignore" ~
+fi
 
 # Setup and install packages for Debian/Ubuntu, Alpine, or EL
 
