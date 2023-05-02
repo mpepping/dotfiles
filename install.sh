@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 # shellcheck source=/dev/null
 source /etc/os-release
 
@@ -34,18 +36,18 @@ setup_debian() {
   # GitHub CLI
   echo
   echo "** Downloading GitHub CLI"
-  curl -s https://api.github.com/repos/cli/cli/releases/latest \
-    | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
-    | xargs curl -O -L
 
-  sudo -n dpkg -i ./gh_*.deb
-  rm -f ./gh_*.deb
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+  && sudo apt update \
+  && sudo apt install gh -y
 }
 
 setup_alpine() {
   echo
   echo "** Installing apk packages"
-  sudo -n apk --no-cache add bat colordiff fzf jq vim
+  sudo -n apk --no-cache add bash bat colordiff fzf jq vim
 }
 
 setup_el() {
@@ -56,12 +58,9 @@ setup_el() {
   # GitHub CLI
   echo
   echo "** Downloading GitHub CLI"
-  curl -s https://api.github.com/repos/cli/cli/releases/latest \
-    | jq '.assets[] | select(.name | endswith("_linux_amd64.rpm")).browser_download_url' \
-    | xargs curl -O -L
-
-  sudo -n rpm -Uvh ./gh_*.rpm
-  rm -f ./gh_*.rpm
+  sudo dnf install 'dnf-command(config-manager)'
+  sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+  sudo dnf install -y gh
 }
 
 # Run the setup function for the current OS

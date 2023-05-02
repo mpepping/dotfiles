@@ -6,5 +6,9 @@ alias lll='ls -lart'
 
 alias cat='batcat'
 alias less='batcat'
+
+alias gcat='/bin/cat'
+alias gless='/usr/bin/less'
+
 alias diff='colordiff'
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'

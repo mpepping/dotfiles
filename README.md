@@ -6,7 +6,7 @@ Personal dotfiles for GitHub Codespaces and VS Code devcontainers.
 
 ## For use with GitHub Codespaces
 
-Codespaces automatically picks up `install.sh`.
+Codespaces automatically picks up [`install.sh`](install.sh). Just fork and appoint the repository in [your Codespaces settings](https://github.com/settings/codespaces).
 
 ## For use with VS Code devcontainers
 
