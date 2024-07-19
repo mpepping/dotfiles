@@ -1,5 +1,7 @@
 # dotfiles
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/mpepping/dotfiles)
+
 Personal dotfiles for GitHub Codespaces and VS Code devcontainers.
 
 * <https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles>
@@ -22,3 +24,4 @@ Configure VS Code to use the dotfiles repository, so that it will be picked up b
     "GIT_AUTHOR_EMAIL": "your@email.com"
   }
 }
+```

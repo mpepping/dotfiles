@@ -8,7 +8,7 @@ shopt -s histappend                      # append to history, don't overwrite it
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Theme for bat
-export BAT_THEME="GitHub"
+export BAT_THEME="OneHalfDark"
 
 # avoid ruby UTF8/ASCII errors
 export LC_ALL="en_US.UTF-8"
