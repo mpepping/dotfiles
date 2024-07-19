@@ -10,5 +10,7 @@ alias less='batcat'
 alias gcat='/bin/cat'
 alias gless='/usr/bin/less'
 
+alias inetip='curl -4 -s "http://ipinfo.io"'
+
 alias diff='colordiff'
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
