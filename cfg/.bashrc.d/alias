@@ -4,8 +4,13 @@ alias l='ls'
 alias ll='ls -la'
 alias lll='ls -lart'
 
-alias cat='batcat'
-alias less='batcat'
+if [ -x "$(command -v bat)" ]; then
+  alias cat='bat'
+  alias less='bat'
+else
+  alias cat='batcat'
+  alias less='batcat'
+fi
 
 alias gcat='/bin/cat'
 alias gless='/usr/bin/less'

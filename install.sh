@@ -15,8 +15,8 @@ else
 fi
 
 # Link dotfiles
-ln -sf "${DOTPATH}/cfg/.bash" ~
-ln -sf "${DOTPATH}/cfg/.bashrc" ~/.bash_aliases # Cheating a bit here to inject my stuff
+ln -sf "${DOTPATH}/cfg/.bashrc.d" ~
+ln -sf "${DOTPATH}/cfg/.bashrc" ~/.bash_aliases # Cheating a bit here to inject stuff on ubuntu
 ln -sf "${DOTPATH}/cfg/.fzf.bash" ~
 
 # Link these dotfiles only if running in Codespaces
@@ -50,7 +50,7 @@ setup_alpine() {
   sudo -n apk --no-cache add bash bat colordiff fzf jq vim
 }
 
-setup_el() {
+setup_redhat() {
   echo
   echo "** Installing rpm packages"
   sudo -n dnf install -y bat colordiff fzf jq vim
@@ -71,8 +71,8 @@ case "$ID" in
   alpine)
     setup_alpine
     ;;
-  redhat|centos)
-    setup_el
+  redhat|centos|fedora)
+    setup_redhat
     ;;
   *)
     echo
