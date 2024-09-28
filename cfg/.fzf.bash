@@ -4,4 +4,5 @@
 
 # Key bindings
 # ------------
-source "/usr/share/doc/fzf/examples/key-bindings.bash"
+[[ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]] && source "/usr/share/doc/fzf/examples/key-bindings.bash"
+[[ -f "/usr/share/fzf/shell/key-bindings.bash" ]] && source "/usr/share/fzf/shell/key-bindings.bash"
