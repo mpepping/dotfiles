@@ -71,7 +71,7 @@ case "$ID" in
   alpine)
     setup_alpine
     ;;
-  redhat|centos|fedora)
+  redhat|almalinux|centos|fedora|rocky)
     setup_redhat
     ;;
   *)
