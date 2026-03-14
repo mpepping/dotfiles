@@ -14,14 +14,14 @@ if [ -x "$(command -v git)" ]; then
     git_current_branch
   }
   # Pretty log messages
-  function _git_log_prettily(){
-    if ! [ -z $1 ]; then
-      git log --pretty=$1
+  function _git_log_prettily() {
+    if ! [ -z "$1" ]; then
+      git log --pretty="$1"
     fi
   }
   # Warn if the current branch is a WIP
   function work_in_progress() {
-    if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+    if git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"; then
       echo "WIP!!"
     fi
   }
@@ -87,7 +87,6 @@ if [ -x "$(command -v git)" ]; then
   alias gfa='git fetch --all --prune'
   alias gfo='git fetch origin'
 
-
   alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
   alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
@@ -95,7 +94,6 @@ if [ -x "$(command -v git)" ]; then
 
   alias gignore='git update-index --assume-unchanged'
   alias gignored='git ls-files -v | grep "^[[:lower:]]"'
-
 
   alias gl='git pull'
   alias glg='git log --stat'

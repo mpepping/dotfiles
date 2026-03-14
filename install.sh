@@ -18,6 +18,7 @@ fi
 ln -sf "${DOTPATH}/cfg/.bashrc.d" ~
 ln -sf "${DOTPATH}/cfg/.bashrc" ~/.bash_aliases # Cheating a bit here to inject stuff on ubuntu
 ln -sf "${DOTPATH}/cfg/.fzf.bash" ~
+ln -sf "${DOTPATH}/cfg/.vimrc" ~
 
 # Link these dotfiles only if running in Codespaces
 if [[ -n $CODESPACES ]]; then
@@ -37,11 +38,11 @@ setup_debian() {
   echo
   echo "** Downloading GitHub CLI"
 
-  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-  && sudo apt update \
-  && sudo apt install gh -y
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+    sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+    sudo apt update &&
+    sudo apt install gh -y
 }
 
 setup_alpine() {
@@ -65,19 +66,19 @@ setup_redhat() {
 
 # Run the setup function for the current OS
 case "$ID" in
-  debian|ubuntu)
-    setup_debian
-    ;;
-  alpine)
-    setup_alpine
-    ;;
-  redhat|almalinux|centos|fedora|rocky)
-    setup_redhat
-    ;;
-  *)
-    echo
-    echo "No configuration for $PRETTY_NAME ($ID)"
-    ;;
+debian | ubuntu)
+  setup_debian
+  ;;
+alpine)
+  setup_alpine
+  ;;
+redhat | almalinux | centos | fedora | rocky)
+  setup_redhat
+  ;;
+*)
+  echo
+  echo "No configuration for $PRETTY_NAME ($ID)"
+  ;;
 esac
 
 echo

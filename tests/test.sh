@@ -1,9 +1,12 @@
 #!/bin/bash
 set -e
-cd "$(dirname "$0")/.."
+REPO="$(git rev-parse --show-toplevel)"
 
+CRT="docker"
 IMG="ghcr.io/mpepping/dotfiles:latest"
 
-docker build . -t $IMG -f tests/Dockerfile.test --force-rm
-docker run --rm -it $IMG
-docker rmi $IMG
+cd "$REPO"
+
+"$CRT" build . -t $IMG -f tests/Dockerfile.test --force-rm
+"$CRT" run --rm -it $IMG
+"$CRT" rmi $IMG
