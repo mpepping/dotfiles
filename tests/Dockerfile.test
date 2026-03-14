@@ -7,4 +7,4 @@ USER vscode
 COPY . /home/vscode/dotfiles
 RUN /home/vscode/dotfiles/install.sh
 
-CMD bash
+CMD ["bash"]
